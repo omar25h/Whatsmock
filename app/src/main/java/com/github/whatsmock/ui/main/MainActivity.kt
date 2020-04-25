@@ -1,7 +1,8 @@
-package com.github.whatsmock
+package com.github.whatsmock.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.github.whatsmock.R
 
 class MainActivity : AppCompatActivity() {
 
