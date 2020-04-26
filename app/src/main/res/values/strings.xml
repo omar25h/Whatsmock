@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Whatsmock</string>
+
+    <string name="description_imageView_avatar">Avatar Image</string>
 </resources>
