@@ -3,6 +3,7 @@ package com.github.whatsmock
 import android.app.Application
 import com.github.whatsmock.di.components.DaggerAppComponent
 import com.github.whatsmock.di.modules.AppModule
+import com.github.whatsmock.di.modules.RoomModule
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
@@ -20,6 +21,7 @@ class MainApplication : Application(), HasAndroidInjector {
         DaggerAppComponent.builder()
             .application(this)
             .appModule(AppModule(this))
+            .roomModule(RoomModule(this))
             .build()
             .inject(this)
     }

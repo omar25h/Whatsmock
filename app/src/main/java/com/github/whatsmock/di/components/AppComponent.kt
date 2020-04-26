@@ -4,6 +4,7 @@ import android.app.Application
 import com.github.whatsmock.MainApplication
 import com.github.whatsmock.di.modules.AppModule
 import com.github.whatsmock.di.modules.BuildersModule
+import com.github.whatsmock.di.modules.RoomModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
@@ -14,7 +15,8 @@ import javax.inject.Singleton
     modules = [
         AndroidSupportInjectionModule::class,
         AppModule::class,
-        BuildersModule::class
+        BuildersModule::class,
+        RoomModule::class
     ]
 )
 interface AppComponent {
@@ -25,6 +27,8 @@ interface AppComponent {
         fun application(app: Application): Builder
 
         fun appModule(appModule: AppModule): Builder
+
+        fun roomModule(roomModule: RoomModule): Builder
 
         fun build(): AppComponent
     }
