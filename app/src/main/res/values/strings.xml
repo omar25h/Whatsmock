@@ -2,4 +2,7 @@
     <string name="app_name">Whatsmock</string>
 
     <string name="description_imageView_avatar">Avatar Image</string>
+    <string name="description_imageView_send">Send Message</string>
+
+    <string name="text_message">Message</string>
 </resources>

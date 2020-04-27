@@ -1,5 +1,6 @@
 package com.github.whatsmock.di.modules
 
+import com.github.whatsmock.ui.chatdetail.ChatDetailFragment
 import com.github.whatsmock.ui.chats.ChatsFragment
 import com.github.whatsmock.ui.main.MainActivity
 import dagger.Module
@@ -13,4 +14,7 @@ abstract class BuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeChatsFragmentInjector(): ChatsFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeChatDetailFragmentInjector(): ChatDetailFragment
 }

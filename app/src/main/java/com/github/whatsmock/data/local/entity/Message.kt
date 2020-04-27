@@ -13,8 +13,8 @@ import java.util.*
     ]
 )
 data class Message(
-    @PrimaryKey(autoGenerate = true) val id: Int = 1,
-    @ColumnInfo(name = "user_id") val userId: Int = 1,
+    @PrimaryKey(autoGenerate = true) val id: Int,
+    @ColumnInfo(name = "user_id") val userId: Int,
     val message: String,
     @ColumnInfo(name = "is_forward") val isForward: Boolean,
     @ColumnInfo(name = "created_at") val createdAt: Date

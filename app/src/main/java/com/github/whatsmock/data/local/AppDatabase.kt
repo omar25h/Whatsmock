@@ -4,6 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.github.whatsmock.data.local.dao.ChatDao
+import com.github.whatsmock.data.local.dao.MessageDao
 import com.github.whatsmock.data.local.entity.Message
 import com.github.whatsmock.data.local.entity.User
 import com.github.whatsmock.data.local.view.Chat
@@ -23,6 +24,8 @@ import com.github.whatsmock.data.local.view.Chat
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun chatDao(): ChatDao
+
+    abstract fun messageDao(): MessageDao
 
     companion object {
         const val VERSION = 1

@@ -6,8 +6,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import androidx.recyclerview.widget.RecyclerView
@@ -38,6 +40,10 @@ class ChatsFragment : Fragment() {
         recyclerViewChats.layoutManager = LinearLayoutManager(context, VERTICAL, false)
         recyclerViewChats.adapter = ChatAdapter(requireContext()) {
             Log.i(this::class.simpleName, "Chat clicked: $it")
+            findNavController().navigate(
+                R.id.action_chatsFragment_to_chatDetailFragment,
+                bundleOf(Pair("chat", it))
+            )
         }
 
         chatRepository.fetchChats().observe(viewLifecycleOwner, Observer {

@@ -4,6 +4,7 @@ import androidx.room.Room
 import com.github.whatsmock.MainApplication
 import com.github.whatsmock.data.local.AppDatabase
 import com.github.whatsmock.data.local.dao.ChatDao
+import com.github.whatsmock.data.local.dao.MessageDao
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -13,7 +14,6 @@ class RoomModule(app: MainApplication) {
 
     private val database = Room
         .databaseBuilder(app, AppDatabase::class.java, "whatsmock-db")
-        .fallbackToDestructiveMigration()
         .createFromAsset("whatsmock.db")
         .build()
 
@@ -28,5 +28,11 @@ class RoomModule(app: MainApplication) {
     @Provides
     fun provideChatDao(): ChatDao {
         return database.chatDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideMessageDao(): MessageDao {
+        return database.messageDao()
     }
 }
