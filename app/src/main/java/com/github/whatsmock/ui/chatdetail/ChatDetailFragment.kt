@@ -118,6 +118,7 @@ class ChatDetailFragment : Fragment() {
                     Calendar.getInstance(Locale.getDefault()).time
                 )
                 chatRepository.sendMessage(receivedMessage)
+                chatRepository.sendMessage(receivedMessage)
             }
         }
     }
