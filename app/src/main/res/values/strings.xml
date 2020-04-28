@@ -5,4 +5,14 @@
     <string name="description_imageView_send">Send Message</string>
 
     <string name="text_message">Message</string>
+
+    <string name="action_select_theme">Select Theme</string>
+
+    <string name="pref_key_theme" translatable="false">THEME</string>
+
+    <string-array name="themes">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>System Default</item>
+    </string-array>
 </resources>
