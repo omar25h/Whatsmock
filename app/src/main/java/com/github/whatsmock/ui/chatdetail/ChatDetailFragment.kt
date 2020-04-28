@@ -86,6 +86,8 @@ class ChatDetailFragment : Fragment() {
     }
 
     private fun setupButton() {
+        imageButtonSend.isEnabled = false
+
         textInputEditTextMessage.addTextChangedListener {
             imageButtonSend.isEnabled = !(it.isNullOrEmpty() || it.trim().isEmpty())
         }
