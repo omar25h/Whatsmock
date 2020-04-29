@@ -3,9 +3,11 @@ package com.github.whatsmock.ui.chats
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Outline
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewOutlineProvider
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
@@ -54,6 +56,12 @@ class ChatAdapter(
 
             chat.imagePath?.let {
                 imageViewAvatar.setImageBitmap(getBitmapFromAssets(it))
+                imageViewAvatar.outlineProvider = object : ViewOutlineProvider() {
+                    override fun getOutline(view: View?, outline: Outline?) {
+                        outline!!.setRoundRect(0, 0, view!!.width, view.height, 25f)
+                    }
+                }
+                imageViewAvatar.clipToOutline = true
             }
 
             itemView.setOnClickListener {
