@@ -43,11 +43,13 @@ class ChatAdapter(
 
         private val assetManager = context.assets
 
-        private val dateFormatter = SimpleDateFormat("dd/MM hh:mm a", Locale.getDefault())
+        private val dateFormatter = SimpleDateFormat("MMM dd\nhh:mm a", Locale.getDefault())
 
         fun bind(chat: Chat) {
             textViewFullName.text = chat.fullName
-            textViewMessage.text = chat.lastMessage
+            textViewMessage.text = chat.lastMessage?.replace("\n", " ")
+            textViewTime.textAlignment = TextView.TEXT_ALIGNMENT_CENTER
+            textViewTime.setLineSpacing(0f, 1.5f)
             textViewTime.text = chat.updatedAt?.let { dateFormatter.format(it) }
 
             chat.imagePath?.let {

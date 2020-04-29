@@ -3,6 +3,9 @@ package com.github.whatsmock.ui.chats
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.InsetDrawable
 import android.os.Build
 import android.os.Build.VERSION_CODES.Q
 import android.os.Bundle
@@ -13,6 +16,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import androidx.recyclerview.widget.RecyclerView
@@ -52,6 +56,21 @@ class ChatsFragment : Fragment() {
 
         recyclerViewChats = view.findViewById(R.id.recyclerView_chats)
         recyclerViewChats.layoutManager = LinearLayoutManager(context, VERTICAL, false)
+        recyclerViewChats.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                VERTICAL
+            ).apply {
+                setDrawable(
+                    InsetDrawable(
+                        ColorDrawable(Color.GRAY),
+                        toDP(80),
+                        0,
+                        0,
+                        0
+                    )
+                )
+            })
         recyclerViewChats.adapter = ChatAdapter(requireContext()) {
             Log.i(this::class.simpleName, "Chat clicked: $it")
             findNavController().navigate(
@@ -109,5 +128,10 @@ class ChatsFragment : Fragment() {
             }
             .create()
             .show()
+    }
+
+    // toDP converts pixels to pixel-independent units, depending on screen resolution.
+    private fun toDP(pixels: Int): Int {
+        return (pixels * resources.displayMetrics.density).toInt()
     }
 }
